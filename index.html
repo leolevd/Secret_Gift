@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Секрет</title>
+</head>
+<body>
+    <form id="password">
+        <input type="text" id="pass">
+        <button type="submit">Enter</button>
+    </form>
+    <p></p>
+    <script>
+        // Ловушка для F12 и прочего тёмного колдовства
+        (function () {
+    const redirectTo = "blocked.html";
+
+    let devtools = { open: false };
+    let threshold = 160;
+
+    function detectDevTools() {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        if (widthThreshold || heightThreshold) {
+            window.location.replace(redirectTo);
+        }
+    }
+
+    setInterval(detectDevTools, 500);
+})();
+
+
+    </script>
+    <script>
+        function check(passw) {
+            if (passw == "GoodbyeGiftForTayaJUNE2025") {
+                let link = document.querySelector("p")
+                link.innerHTML = '<a href="https://drive.google.com/drive/folders/1T-mh4-nRs49Fhhh_fQbM469j90iBd7pL?usp=drive_link">Секрет</a>'
+            } else {
+                let link = document.querySelector("p")
+                link.innerHTML = '<span style="color: red;">Incorrect password / Неправильный пароль</span>'
+            }
+        }
+
+        document.getElementById("password").addEventListener("submit", function (e) {
+            e.preventDefault(); // Останавливаем отправку формы
+            let p = document.querySelector("input#pass").value;
+            check(p);
+        });
+    </script>
+</body>
+</html>
